@@ -1,0 +1,8 @@
+.window_style {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgb(246,217,253);
+    border-radius: 12px;
+    height: 250px;
+}

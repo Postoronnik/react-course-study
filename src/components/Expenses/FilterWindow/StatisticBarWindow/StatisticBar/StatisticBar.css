@@ -1,0 +1,19 @@
+.statistic_bar_content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.statistic_bar {
+    background-color: rgb(187,168,238);
+    border-radius: 12px;
+    border-color: blueviolet;
+    border-width: 1px;
+    height: 200px;
+    width: 1.5rem;
+}
+
+.text_format {
+    color: black;
+}
+
