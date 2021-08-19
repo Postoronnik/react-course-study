@@ -1,7 +1,8 @@
 import Expenses from "./components/Expenses/Expenses";
+import ExpenseWindow from "./components/NewExpense/Window/ExpenseWindow";
 
 function App() {
-    const expenses = [
+    let expenses = [
         {
             id: 'e1',
             title: 'Car insurance',
@@ -21,8 +22,15 @@ function App() {
             date: new Date(2021, 3, 10)
         },
     ];
+
+    const addExpenseHandler = (expenseData) => {
+        console.log(expenseData);
+        expenses.push(expenseData);
+    }
+
     return (
         <div>
+            <ExpenseWindow addExpense = {addExpenseHandler}/>
             <Expenses expenses = {expenses}/>
         </div>
     );
