@@ -3,14 +3,20 @@ import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import Card from "../UI/Card/Card";
 import FilterWindow from "./FilterWindow/FilterWindow";
 
-function Expenses(props) {
+
+function Expenses({getSelectedYear,expenses}) {
+
+    const getSelectedYearHandler = (selectedYear) => {
+        getSelectedYear(selectedYear);
+    };
+
     return(
         <Card className="expenses">
-            <FilterWindow/>
-            {props.expenses.map( value => {
+            <FilterWindow getSelectedYear = {getSelectedYearHandler}/>
+            {expenses.map( value => {
                 return <ExpenseItem
                     title={value.title}
-                    price={value.price}
+                    amount={value.amount}
                     date={value.date}
                 />
              })}

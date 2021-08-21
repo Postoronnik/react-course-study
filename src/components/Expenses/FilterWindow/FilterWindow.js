@@ -2,17 +2,17 @@ import './FilterWindow.css';
 import YearSelector from "./YearSelector/YearSelector";
 import StatisticBarWindow from "./StatisticBarWindow/StatisticBarWindow";
 
-function FilterWindow() {
+function FilterWindow({getSelectedYear}) {
 
-    const getChosenYearHandler = (chosenYear) => {
-        console.log(chosenYear);
+    const getSelectedYearHandler = (selectedYear) => {
+        getSelectedYear(selectedYear);
     }
 
     return (
         <div className='filter-window'>
             <div className="filter-window_control">
                 <div>Filter by year</div>
-                <YearSelector getChosenYear = {getChosenYearHandler}/>
+                <YearSelector  getSelectedYear = {getSelectedYearHandler}/>
             </div>
             <StatisticBarWindow/>
         </div>

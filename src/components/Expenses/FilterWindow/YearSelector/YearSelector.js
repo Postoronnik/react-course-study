@@ -1,7 +1,7 @@
 
-function YearSelector(props){
+function YearSelector({getSelectedYear}){
     const onNewYearSelectHandler = (event) => {
-       props.getChosenYear(event.target.value);
+        getSelectedYear(event.target.value);
     };
 
     return (
