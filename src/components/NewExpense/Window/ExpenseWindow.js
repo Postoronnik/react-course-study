@@ -4,31 +4,20 @@ import {useState} from "react";
 import ExpenseFormOpened from "./Form/Opened/ExpenseFormOpened";
 
 function ExpenseWindow({addExpense}) {
-    const [isClosed, setIsClosed] = useState(Boolean("false"));
+    const [isClosed, setIsClosed] = useState(true);
 
-    const actionHandler = (event) => {
-        if (event.type === "submit") {
-            setIsClosed(false);
-            return;
-        }
+    const onSubmitAddNewExpenseHandler = () => {
+        setIsClosed(false);
+    }
 
-        if(event.type === "reset"){
-            setIsClosed(true);
-            return;
-        }
-    };
-
-    if (isClosed) {
-        return (
-            <div className='window'>
-                <ExpenseFormClosed submit={actionHandler}/>
-            </div>
-        );
+    const onResetHandler = () => {
+        setIsClosed(true);
     }
 
     return (
         <div className='window'>
-            <ExpenseFormOpened addExpense={addExpense} reset = {actionHandler}/>
+            {isClosed && <ExpenseFormClosed submit={onSubmitAddNewExpenseHandler}/>}
+            {!isClosed && <ExpenseFormOpened addExpense={addExpense} reset={onResetHandler}/>}
         </div>
     );
 }

@@ -22,7 +22,6 @@ function ExpenseFormOpened({addExpense,reset}) {
     const submitHandler = (event) => {
         event.preventDefault();
 
-
         addExpense({
             title,
             amount,
@@ -54,8 +53,8 @@ function ExpenseFormOpened({addExpense,reset}) {
                     <label>Amount</label>
                     <input
                         type='number'
-                        min="0.01"
-                        step="0.5"
+                        min="0"
+                        step="10"
                         value={amount}
                         onChange={numberChangeHandler}
                     />

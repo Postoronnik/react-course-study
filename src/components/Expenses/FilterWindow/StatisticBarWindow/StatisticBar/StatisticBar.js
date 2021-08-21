@@ -1,12 +1,23 @@
 
 import './StatisticBar.css';
 
-function StatisticBar({month}){
+function StatisticBar({month, amount, maxAmount}){
+    let barFillHeight = '0%';
+
+    console.log(amount);
+
+    if (maxAmount > 0) {
+        barFillHeight = Math.round((amount / maxAmount) * 100) + '%';
+    }
 
     return (
-        <div className="statistic_bar_content">
-            <div className="statistic_bar"/>
-            <div className="text_format">{month}</div>
+        <div className='chart-bar'>
+            <div className='chart-bar__inner'>
+                <div className='chart-bar__fill'
+                     style={{height : barFillHeight}}
+                />
+            </div>
+            <div className='chart-bar__label'> {month} </div>
         </div>
     );
 }

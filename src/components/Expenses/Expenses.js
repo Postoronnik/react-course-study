@@ -6,13 +6,9 @@ import ExpenseList from "./ExpenseList/ExpenseList";
 
 function Expenses({getSelectedYear, expenses}) {
 
-    const getSelectedYearHandler = (selectedYear) => {
-        getSelectedYear(selectedYear);
-    };
-
     return (
         <Card className="expenses">
-            <FilterWindow getSelectedYear={getSelectedYearHandler}/>
+            <FilterWindow getSelectedYear={getSelectedYear} expenses = {expenses}/>
             <ExpenseList expenses={expenses}/>
         </Card>
     );
