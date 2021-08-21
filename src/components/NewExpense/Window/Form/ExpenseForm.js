@@ -28,7 +28,11 @@ function ExpenseForm(props) {
             amount,
             date: new Date(date)
         });
+        setTitle('');
+        setAmount('');
+        setDate('');
     };
+
 
 
     return (
@@ -62,6 +66,7 @@ function ExpenseForm(props) {
                         onChange={dateChangeHandler}
                     />
                 </div>
+
             </div>
             <div className="form_actions">
                 <button type="submit">Add expense</button>

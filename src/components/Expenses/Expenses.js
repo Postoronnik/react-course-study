@@ -15,6 +15,7 @@ function Expenses({getSelectedYear,expenses}) {
             <FilterWindow getSelectedYear = {getSelectedYearHandler}/>
             {expenses.map( value => {
                 return <ExpenseItem
+                    key={value.id}
                     title={value.title}
                     amount={value.amount}
                     date={value.date}

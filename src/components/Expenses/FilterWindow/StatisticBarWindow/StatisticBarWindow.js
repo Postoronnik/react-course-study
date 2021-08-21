@@ -20,7 +20,7 @@ function StatisticBarWindow() {
 
     return (
         <div className="window_style">
-            {months.map((value) => {return <StatisticBar month = {value}/> })}
+            {months.map((value) => {return <StatisticBar key={value} month = {value}/> })}
         </div>
     );
 }
