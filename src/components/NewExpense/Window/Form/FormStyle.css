@@ -21,6 +21,16 @@
     max-width: 100%;
 }
 
+.form_open_buttons_direction {
+    display: flex;
+    flex-direction: row;
+    margin-left: 55%;
+}
+
 .form_actions {
     text-align: right;
+}
+
+.form_actions_closed {
+    text-align: center;
 }

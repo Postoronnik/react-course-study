@@ -1,19 +1,34 @@
 import './ExpenseWindow.css';
-import ExpenseForm from "./Form/ExpenseForm";
+import ExpenseFormClosed from "./Form/Closed/ExpenseFormClosed";
+import {useState} from "react";
+import ExpenseFormOpened from "./Form/Opened/ExpenseFormOpened";
 
-function ExpenseWindow(props) {
+function ExpenseWindow({addExpense}) {
+    const [isClosed, setIsClosed] = useState(Boolean("false"));
 
-    const onSaveExpenseDataHandler = (enteredExpenseData) => {
-        const expenseData = {
-            id: Math.random().toString(),
-            ...enteredExpenseData
-        };
-        props.addExpense(expenseData);
+    const actionHandler = (event) => {
+        if (event.type === "submit") {
+            setIsClosed(false);
+            return;
+        }
+
+        if(event.type === "reset"){
+            setIsClosed(true);
+            return;
+        }
     };
+
+    if (isClosed) {
+        return (
+            <div className='window'>
+                <ExpenseFormClosed submit={actionHandler}/>
+            </div>
+        );
+    }
 
     return (
         <div className='window'>
-            <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler}/>
+            <ExpenseFormOpened addExpense={addExpense} reset = {actionHandler}/>
         </div>
     );
 }

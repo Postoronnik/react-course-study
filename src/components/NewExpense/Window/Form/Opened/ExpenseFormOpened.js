@@ -1,11 +1,11 @@
-import './ExpenseForm.css';
+import '../FormStyle.css';
 import {useState} from "react";
 
-function ExpenseForm(props) {
+function ExpenseFormOpened({addExpense,reset}) {
 
-    const [title,setTitle] = useState('');
+    const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
-    const [date,setDate] = useState('');
+    const [date, setDate] = useState('');
 
     const titleChangeHandler = (event) => {
         setTitle(event.target.value)
@@ -16,27 +16,31 @@ function ExpenseForm(props) {
     };
 
     const dateChangeHandler = (event) => {
-       setDate(event.target.value)
+        setDate(event.target.value)
     };
 
     const submitHandler = (event) => {
         event.preventDefault();
 
 
-        props.onSaveExpenseData({
-            title ,
+        addExpense({
+            title,
             amount,
             date: new Date(date)
         });
+
         setTitle('');
         setAmount('');
         setDate('');
     };
 
-
+    const resetHandler = (event) => {
+        event.preventDefault();
+        reset(event);
+    };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} onReset={resetHandler}>
             <div className="form_controls">
                 <div className="form_control">
                     <label>Title</label>
@@ -66,13 +70,17 @@ function ExpenseForm(props) {
                         onChange={dateChangeHandler}
                     />
                 </div>
-
             </div>
-            <div className="form_actions">
-                <button type="submit">Add expense</button>
+            <div className="form_open_buttons_direction">
+                <div className="form_actions">
+                    <button type="submit">Add expense</button>
+                </div>
+                <div className="form_actions">
+                    <button type="reset">Cancel</button>
+                </div>
             </div>
         </form>
     );
 }
 
-export default ExpenseForm;
+export default ExpenseFormOpened;

@@ -29,8 +29,12 @@ function App() {
     const [year, setYear] = useState(2019);
 
     const addExpenseHandler = (newExpense) => {
+        const expenseData = {
+            id: Math.random().toString(),
+            ...newExpense
+        };
         setExpenses(prevExpenses => {
-            return [{...newExpense, date: new Date(newExpense.date)}, ...prevExpenses];
+            return [{...expenseData, date: new Date(newExpense.date)}, ...prevExpenses];
         });
     }
 

@@ -1,26 +1,19 @@
 import './Expenses.css';
-import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import Card from "../UI/Card/Card";
 import FilterWindow from "./FilterWindow/FilterWindow";
+import ExpenseList from "./ExpenseList/ExpenseList";
 
 
-function Expenses({getSelectedYear,expenses}) {
+function Expenses({getSelectedYear, expenses}) {
 
     const getSelectedYearHandler = (selectedYear) => {
         getSelectedYear(selectedYear);
     };
 
-    return(
+    return (
         <Card className="expenses">
-            <FilterWindow getSelectedYear = {getSelectedYearHandler}/>
-            {expenses.map( value => {
-                return <ExpenseItem
-                    key={value.id}
-                    title={value.title}
-                    amount={value.amount}
-                    date={value.date}
-                />
-             })}
+            <FilterWindow getSelectedYear={getSelectedYearHandler}/>
+            <ExpenseList expenses={expenses}/>
         </Card>
     );
 }
